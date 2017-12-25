@@ -1,6 +1,7 @@
 <?php
 
-namespace LambdaPHP {
+namespace Cache {
+
     use Aws\DynamoDb\DynamoDbClient;
 
     class Cache {
