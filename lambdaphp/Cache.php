@@ -23,12 +23,14 @@ namespace LambdaPHP {
 
         public function get(string $key, $default = null, $expires = 86400) {
             if ($result = $this->client->getItem(['TableName' => $this->table_name, 'Key' => ['id' => ['S' => $key]], 'ConsistentRead' => false,])) {
+                $item = [];
                 $result = isset($result['Item']) ? $result['Item'] : [];
-                foreach ($result as $key => $value) {
-                    $item[$key] = current($value);
+
+                foreach ($result as $k => $v) {
+                    $item[$k] = current($v);
                 }
 
-                $data = $item['expires'] < time() ? json_decode($item['data'], true) : null;
+                $data = @(!empty($item['data']) && ($item['expires'] > time())) ? json_decode($item['data'], true) : null;
             }
 
             if (empty($data) && !empty($default)) {
