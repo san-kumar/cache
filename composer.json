@@ -1,0 +1,21 @@
+{
+  "name": "lambdaphp/cache",
+  "description": "Cache for lambdaphp based sites",
+  "type": "library",
+  "suggest": {
+    "aws/aws-sdk-php": "^3.36"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "San Kumar",
+      "email": "lambdaphp@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LambdaPHP\\": "lambdaphp/"
+    }
+  },
+  "minimum-stability": "dev"
+}
